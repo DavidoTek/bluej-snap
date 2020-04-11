@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="[Project]">
+  <img src="https://bluej.org/bluej-icon-256-2x.png" height="256" alt="BlueJ Logo">
   <br />
   BlueJ
 </h1>
@@ -17,11 +17,9 @@ distributions.</p>
 ![my-snap-name](screenshot.png?raw=true "my-snap-name")
 -->
 
-<p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
-
 ## Install
 
-    sudo snap install my-snap-name
+    sudo snap install bluej
 
 <!-- Uncomment and modify this when your snap is available on the store
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/my-snap-name)
@@ -31,7 +29,7 @@ distributions.</p>
 
 ## Remaining tasks
 <!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "my-snap-name")
+![BlueJ](screenshot.png?raw=true "bluej)
 -->
 
 Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) 
@@ -40,10 +38,10 @@ the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/mas
 upstream so [Project] can authoritatively publish future releases.
 
   - [x] Click the green "Use this template" button above to create a new repository based on this template
-  - [ ] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
-  - [ ] Update the description of the repository
-  - [ ] Update logos and references to `[Project]` and `[my-snap-name]`
-  - [ ] Create a snap that runs in `devmode`
+  - [X] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
+  - [X] Update the description of the repository
+  - [X] Update logos and references to `[Project]` and `[my-snap-name]`
+  - [X] Create a snap that runs in `devmode`
   - [ ] Register the snap in the store, **using the preferred upstream name**
   - [ ] Add a screenshot to this `README.md`
   - [ ] Publish the `devmode` snap in the Snap store edge channel

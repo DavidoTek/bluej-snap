@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=4.2.2
+Name=BlueJ
+GenericName=BlueJ Java Development Environment
+Comment=A free Java Development Environment designed for beginners
+Exec=bluej
+Icon=${SNAP}/meta/gui/bluej.png
+Terminal=false
+Categories=Development;Education
+Type=Application

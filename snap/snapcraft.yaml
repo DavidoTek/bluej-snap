@@ -2,7 +2,9 @@ name: bluej
 version: "4.2.2"
 summary: A free Java Development Environment designed for beginners, used by millions
 description: |
-  ToDo
+  BlueJ is a free IDE for writing Java programs designed for beginners.
+  It graphically shows the class structure of an applications, suitable for educational purposes.
+  For further visualization, the source code is highlighted.
 
 base: core18
 confinement: devmode

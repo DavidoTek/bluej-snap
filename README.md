@@ -13,9 +13,7 @@ distributions.</p>
 </p>
 -->
 
-<!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "my-snap-name")
--->
+![BlueJ](screenshot.png?raw=true "bluej")
 
 ## Install
 

@@ -40,8 +40,8 @@ upstream so [Project] can authoritatively publish future releases.
   - [X] Update the description of the repository
   - [X] Update logos and references to `[Project]` and `[my-snap-name]`
   - [X] Create a snap that runs in `devmode`
-  - [ ] Register the snap in the store, **using the preferred upstream name**
-  - [ ] Add a screenshot to this `README.md`
+  - [X] Register the snap in the store, **using the preferred upstream name**
+  - [X] Add a screenshot to this `README.md`
   - [ ] Publish the `devmode` snap in the Snap store edge channel
   - [ ] Add install instructions to this `README.md`
   - [ ] Update snap store metadata, icons and screenshots

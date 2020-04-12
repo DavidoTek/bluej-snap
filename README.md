@@ -7,6 +7,7 @@
 <p align="center"><b>This is the snap for BlueJ</b>, <i>“A free Java Development Environment designed for beginners, used by millions worldwide”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
+[![bluej](https://snapcraft.io//bluej/badge.svg)](https://snapcraft.io/bluej)
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
 <a href="https://build.snapcraft.io/user/snapcrafters/fork-and-rename-me"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>

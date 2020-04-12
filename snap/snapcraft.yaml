@@ -7,7 +7,7 @@ description: |
   For further visualization, the source code is highlighted.
 
 base: core18
-confinement: devmode
+confinement: strict
 
 apps:
   bluej:
@@ -19,6 +19,8 @@ apps:
       PATH: $JAVA_HOME/jre/bin:$PATH
     plugs:
       - home
+      - network
+      - network-bind
 
 parts:
   bluej:
@@ -57,6 +59,6 @@ parts:
       CP="\$CP:\$JAVAFXJARS"
       JFXRTOPT="-javafxpath=\$JAVAFXPATH"
       JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      java -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
+      java -Duser.home=\$HOME -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch

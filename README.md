@@ -17,11 +17,9 @@ distributions.</p>
 
 ## Install
 
-    sudo snap install bluej
+    sudo snap install --beta bluej
 
-<!-- Uncomment and modify this when your snap is available on the store
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/my-snap-name)
--->
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/bluej)
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
@@ -42,12 +40,12 @@ upstream so [Project] can authoritatively publish future releases.
   - [X] Create a snap that runs in `devmode`
   - [X] Register the snap in the store, **using the preferred upstream name**
   - [X] Add a screenshot to this `README.md`
-  - [ ] Publish the `devmode` snap in the Snap store edge channel
-  - [ ] Add install instructions to this `README.md`
-  - [ ] Update snap store metadata, icons and screenshots
-  - [ ] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
-  - [ ] Publish the confined snap in the Snap store beta channel
-  - [ ] Update the install instructions in this `README.md`
+  - [X] Publish the `devmode` snap in the Snap store edge channel
+  - [X] Add install instructions to this `README.md`
+  - [X] Update snap store metadata, icons and screenshots
+  - [X] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
+  - [X] Publish the confined snap in the Snap store beta channel
+  - [X] Update the install instructions in this `README.md`
   - [ ] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
   - [ ] Make a post in the [Snapcraft Forum](https://forum.snapcraft.io) asking for a transfer of the snap name from you to snapcrafters - [link]()
   - [ ] Ask a [Snapcrafters admin](https://github.com/orgs/snapcrafters/people?query=%20role%3Aowner) to fork your repo into github.com/snapcrafters, and configure the repo for automatic publishing into edge on commit

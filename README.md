@@ -18,7 +18,7 @@ distributions.</p>
 
 ## Install
 
-    sudo snap install --beta bluej
+    sudo snap install bluej
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/bluej)
 

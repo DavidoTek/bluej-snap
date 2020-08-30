@@ -4,7 +4,7 @@
   BlueJ
 </h1>
 
-<p align="center"><b>This is the inofficial snap for BlueJ</b>, <i>“A free Java Development Environment designed for beginners, used by millions worldwide”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the unofficial snap for BlueJ</b>, <i>“A free Java Development Environment designed for beginners, used by millions worldwide”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 [![bluej](https://snapcraft.io//bluej/badge.svg)](https://snapcraft.io/bluej)

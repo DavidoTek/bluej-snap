@@ -6,9 +6,6 @@ description: |
   It graphically shows the class structure of an applications, suitable for educational purposes.
   For further visualization, the source code is highlighted.
 
-architectures:
-  - build-on: amd64, arm64
-    run-on: [amd64, arm64]
 base: core18
 confinement: strict
 

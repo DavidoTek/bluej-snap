@@ -16,7 +16,7 @@ apps:
     command: bluej-launch
     #desktop: usr/share/applications/bluej.desktop
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+      JAVA_HOME: $(dirname $(dirname $(readlink -f $(which java))))
       PATH: $JAVA_HOME/jre/bin:$PATH
     plugs:
       - home

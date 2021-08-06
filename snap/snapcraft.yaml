@@ -1,5 +1,5 @@
 name: bluej
-version: "5.0.1"
+version: "5.0.2"
 summary: A free Java Development Environment designed for beginners, used by millions
 description: |
   BlueJ is a free IDE for writing Java programs designed for beginners.
@@ -26,7 +26,7 @@ apps:
 parts:
   bluej:
     plugin: ant
-    source: https://bluej.org/download/files/source/BlueJ-source-501.zip
+    source: https://bluej.org/download/files/source/BlueJ-source-502.zip
     source-type: zip
     build-packages:
       - openjdk-11-jdk

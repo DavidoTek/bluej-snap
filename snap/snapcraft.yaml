@@ -12,7 +12,7 @@ confinement: strict
 apps:
   bluej:
     extensions:
-      - gnome-3-28
+      - gnome-3-38
     command: bluej-launch
     common-id: org.bluej.BlueJ
     #desktop: usr/share/applications/bluej.desktop

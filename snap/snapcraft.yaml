@@ -6,7 +6,7 @@ description: |
   It graphically shows the class structure of an applications, suitable for educational purposes.
   For further visualization, the source code is highlighted.
 
-base: core18
+base: core20
 confinement: strict
 
 apps:
@@ -30,10 +30,10 @@ parts:
     source: https://bluej.org/download/files/source/BlueJ-source-502.zip
     source-type: zip
     build-packages:
-      - openjdk-11-jdk
+      - openjdk-17-jdk
       - openjfx
       - unzip
-    stage-packages: [openjdk-11-jdk, openjfx]
+    stage-packages: [openjdk-17-jdk, openjfx]
     override-build: |
       cat <<EOF > build.properties
       build_java_home=/usr

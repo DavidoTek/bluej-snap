@@ -6,13 +6,13 @@ description: |
   It graphically shows the class structure of an applications, suitable for educational purposes.
   For further visualization, the source code is highlighted.
 
-base: core20
+base: core18
 confinement: strict
 
 apps:
   bluej:
     extensions:
-      - gnome-3-38
+      - gnome-3-28
     command: bluej-launch
     common-id: org.bluej.BlueJ
     #desktop: usr/share/applications/bluej.desktop

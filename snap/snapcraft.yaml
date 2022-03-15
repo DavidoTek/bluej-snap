@@ -30,10 +30,10 @@ parts:
     source: https://bluej.org/download/files/source/BlueJ-source-502.zip
     source-type: zip
     build-packages:
-      - openjdk-17-jdk
+      - openjdk-11-jdk
       - openjfx
       - unzip
-    stage-packages: [openjdk-17-jdk, openjfx]
+    stage-packages: [openjdk-11-jdk, openjfx]
     override-build: |
       cat <<EOF > build.properties
       build_java_home=/usr
@@ -64,3 +64,5 @@ parts:
       java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch
+    post-install: |
+      cp $SNAP/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blocked.certs $SNAP/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs

@@ -5,7 +5,6 @@ description: |
   BlueJ is a free IDE for writing Java programs designed for beginners.
   It graphically shows the class structure of an applications, suitable for educational purposes.
   For further visualization, the source code is highlighted.
-
 base: core18
 confinement: strict
 
@@ -64,5 +63,3 @@ parts:
       java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch
-    override-prime: |
-      cp $SNAP/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blocked.certs $SNAP/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs

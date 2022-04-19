@@ -32,6 +32,8 @@ parts:
       - openjdk-11-jdk
       - openjfx
       - unzip
+      - ca-certificates-java
+      - ca-certificates
     stage-packages: [openjdk-11-jdk, openjfx]
     override-build: |
       cat <<EOF > build.properties
@@ -63,3 +65,6 @@ parts:
       java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs

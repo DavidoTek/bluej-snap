@@ -1,5 +1,5 @@
 name: bluej
-version: "5.0.3"
+version: "5.1.0"
 summary: A free Java Development Environment designed for beginners, used by millions
 description: |
   BlueJ is a free IDE for writing Java programs designed for beginners.
@@ -24,22 +24,29 @@ apps:
       - network-bind
 
 parts:
+  openjfx:
+    plugin: dump
+    source: https://download2.gluonhq.com/openjfx/16/openjfx-16_linux-x64_bin-sdk.zip
+    override-build: |
+      mkdir -p /usr/share/java
+      cp -r javafx-sdk-16 /usr/share/java
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/java
+      cp -r javafx-sdk-16 $SNAPCRAFT_PART_INSTALL/usr/share/java
   bluej:
+    after:
+    - openjfx
     plugin: ant
-    source: https://bluej.org/download/files/source/BlueJ-source-503.zip
+    source: https://bluej.org/download/files/source/BlueJ-source-510.zip
     source-type: zip
     build-packages:
-      - openjdk-11-jdk
-      - openjfx
+      - openjdk-17-jdk
       - unzip
-      - ca-certificates-java
-      - ca-certificates
-    stage-packages: [openjdk-11-jdk, openjfx]
+    stage-packages: [openjdk-17-jdk]
     override-build: |
       cat <<EOF > build.properties
       build_java_home=/usr
       java_command_dir_name=bin
-      openjfx_path=/usr/share/openjfx
+      openjfx_path=/usr/share/java/javafx-sdk-16
       run_java_home=${build_java_home}
       EOF
       snapcraftctl build
@@ -50,21 +57,22 @@ parts:
       CP="\$SNAP/usr/share/bluej/bluej.jar"
       JFXRTOPT=""
       JFXRTOPT2=""
-      JAVAFXPATH="\$SNAP/usr/share/java"
-      JAVAFXJARS="\$JAVAFXPATH/javafx-base-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-controls-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-fxml-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-graphics-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-media-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-properties-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-swing-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-web-11.jar"
+      JAVAFXPATH="\$SNAP/usr/share/java/javafx-sdk-16/lib"
+      JAVAFXJARS="\$JAVAFXPATH/javafx.base.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.controls.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.fxml.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.graphics.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.media.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.properties.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.swing.jar"
+      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.web.jar"
       CP="\$CP:\$JAVAFXJARS"
       JFXRTOPT="-javafxpath=\$JAVAFXPATH"
       JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
+      \$SNAP/usr/lib/jvm/java-17*/bin/java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch
     override-prime: |
       snapcraftctl prime
-      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
+      rm -vrf /usr/lib/jvm/java-11-openjdk-*
+      rm -vf bin/java

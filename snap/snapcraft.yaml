@@ -1,78 +1,33 @@
 name: bluej
-version: "5.1.0"
+version: "5.2.0"
 summary: A free Java Development Environment designed for beginners, used by millions
 description: |
   BlueJ is a free IDE for writing Java programs designed for beginners.
   It graphically shows the class structure of an applications, suitable for educational purposes.
   For further visualization, the source code is highlighted.
-base: core18
+base: core22
 confinement: strict
+architectures: [amd64]
 
 apps:
   bluej:
     extensions:
-      - gnome-3-28
-    command: bluej-launch
+      - gnome
+    command: usr/bin/bluej
     common-id: org.bluej.BlueJ
-    #desktop: usr/share/applications/bluej.desktop
-    environment:
-      JAVA_HOME: $(dirname $(dirname $(readlink -f $(which java))))
-      PATH: $JAVA_HOME/jre/bin:$PATH
     plugs:
       - home
       - network
       - network-bind
 
 parts:
-  openjfx:
-    plugin: dump
-    source: https://download2.gluonhq.com/openjfx/16/openjfx-16_linux-x64_bin-sdk.zip
-    override-build: |
-      mkdir -p /usr/share/java
-      cp -r javafx-sdk-16 /usr/share/java
-      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/java
-      cp -r javafx-sdk-16 $SNAPCRAFT_PART_INSTALL/usr/share/java
   bluej:
-    after:
-    - openjfx
-    plugin: ant
-    source: https://bluej.org/download/files/source/BlueJ-source-510.zip
-    source-type: zip
-    build-packages:
-      - openjdk-17-jdk
-      - unzip
-    stage-packages: [openjdk-17-jdk]
+    plugin: dump
+    source: https://www.bluej.org/download/files/BlueJ-linux-520.deb
+    source-type: deb
     override-build: |
-      cat <<EOF > build.properties
-      build_java_home=/usr
-      java_command_dir_name=bin
-      openjfx_path=/usr/share/java/javafx-sdk-16
-      run_java_home=${build_java_home}
-      EOF
-      snapcraftctl build
-      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/bluej
-      cp -r lib/* $SNAPCRAFT_PART_INSTALL/usr/share/bluej
-      cat <<EOF > $SNAPCRAFT_PART_INSTALL/bluej-launch # Based on the BlueJ startscript (/usr/bin/bluej)
-      #!/bin/sh
-      CP="\$SNAP/usr/share/bluej/bluej.jar"
-      JFXRTOPT=""
-      JFXRTOPT2=""
-      JAVAFXPATH="\$SNAP/usr/share/java/javafx-sdk-16/lib"
-      JAVAFXJARS="\$JAVAFXPATH/javafx.base.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.controls.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.fxml.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.graphics.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.media.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.properties.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.swing.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx.web.jar"
-      CP="\$CP:\$JAVAFXJARS"
-      JFXRTOPT="-javafxpath=\$JAVAFXPATH"
-      JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      \$SNAP/usr/lib/jvm/java-17*/bin/java -Duser.home=\$SNAP_USER_COMMON -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
-      EOF
-      chmod +x $SNAPCRAFT_PART_INSTALL/bluej-launch
+      cp -r usr $SNAPCRAFT_PART_INSTALL 
+      sed -i 's/\/usr/$SNAP\/usr/g' $SNAPCRAFT_PART_INSTALL/usr/bin/bluej
+      sed -i "s/\"\$JAVAPATH.*/\"\$JAVAPATH\/bin\/java\" -Dawt.useSystemAAFontSettings=on -Duser.home=\$SNAP_USER_COMMON -Xmx512M -cp \"\$CP\" bluej.Boot \"\$@\"/" $SNAPCRAFT_PART_INSTALL/usr/bin/bluej
     override-prime: |
       snapcraftctl prime
-      rm -vrf usr/lib/jvm/java-11-openjdk-*
-      rm -vf bin/java

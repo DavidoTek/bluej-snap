@@ -1,5 +1,5 @@
 name: bluej
-version: "5.4.1"
+version: "5.4.2"
 summary: A free Java Development Environment designed for beginners, used by millions
 description: |
   BlueJ is a free IDE for writing Java programs designed for beginners.
@@ -23,7 +23,7 @@ apps:
 parts:
   bluej:
     plugin: dump
-    source: https://www.bluej.org/download/files/BlueJ-linux-x64-541.deb
+    source: https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-RELEASE-5.4.2/BlueJ-linux-x64-5.4.2.deb
     source-type: deb
     override-build: |
       cp -r usr $SNAPCRAFT_PART_INSTALL 
